@@ -1,0 +1,69 @@
+<application>
+
+	<name>CFML2SCRIPT</name>
+	<author>Marko Simic</author>
+	<version>0.5Alpha</version>
+	<email>marko.simic@gmail.com</email>	
+	<description>
+		<![CDATA[
+		<b>CFML to CFSCript conversion tool</b><br><br>
+		
+		Assists developer in process of code migration from CFML to CFScript.<br>
+		When it finishes conversion, in most cases, it will leave your component unusable.<br>
+		Thus, it requires your attention and detail code review upon completion.<br>
+		In this process javing your under version control will be very valuable.<br>
+		ColdFusion Builder may help you too, with detecting syntax errors.<br>
+		All places, where manual intervention is necessary, are marked with bold comment.<br>
+		Pay special attention on things that are in TODO list.<br><br>
+
+		TOD0:<br>
+		<ul>
+			<li>- loop by step is ignored</li>
+			<li>- improve patterns to handle better CF-HTML mixes</li>
+			<li>- exclude comments from noise reduction calcuation</li>
+		</ul>
+		<br>
+		Requirments:<br>
+			<ul>
+				<li>- ColdFusion Builder 1.x</li>
+				<li>- ColdFusion 9+</li>
+			</ul>
+		<br>
+		Hopefully, by time, we'll make it better and more complete, reducing manual work to minimum.<br>
+		Two more things: This is just an utility and use it at your own risk.<br><br>
+
+		Remove The Noise!<br>
+		]]>
+	</description>	
+	<license>
+		<![CDATA[
+		You can use this extension without any obligation
+		]]>
+	</license>
+	
+    <menucontributions>
+		<contribution target="projectview">
+			<menu name="Syntax Conversion">
+				<filters>
+					<filter type="file" pattern=".*?\.cfc"/>
+				</filters>
+	    		<action name="CFML to CFScript" handlerid="migrate" showResponse="true"/>
+				<action name="CreateObject to &quot;new&quot; [CFML]" handlerid="create2new-tag" showResponse="true"/>
+				<action name="CreateObject to &quot;new&quot; [CFScript]" handlerid="create2new-script" showResponse="true"/>
+			</menu>
+			<menu name="Create To New">
+				<filters>
+					<filter type="file" pattern=".*?\.cfm"/>
+				</filters>
+				<action name="CreateObject to &quot;new&quot; [CFML]" handlerid="create2new-tag" showResponse="true"/>
+			</menu>
+		</contribution>
+    </menucontributions>	
+
+	<handlers>
+		<handler id="migrate" type="CFM" filename="migrate.cfm" />
+		<handler id="create2new-tag" type="CFM" filename="create2new-tags.cfm" />
+		<handler id="create2new-script" type="CFM" filename="create2new-script.cfm" />
+	</handlers>
+
+</application>

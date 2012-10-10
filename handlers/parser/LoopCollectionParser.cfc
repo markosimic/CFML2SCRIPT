@@ -1,0 +1,5 @@
+﻿component 
+{
+	string function toCFScript(){
+	}
+}
